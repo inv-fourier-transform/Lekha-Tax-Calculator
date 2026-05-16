@@ -23,7 +23,4 @@ dist-ssr
 *.sln
 *.sw?
 
-# Build artifacts
-artifacts/
-!artifacts/results_hero.png
-!artifacts/results_table.png
+
