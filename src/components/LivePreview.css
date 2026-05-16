@@ -1,0 +1,235 @@
+/* ============================================================
+   Live Preview Panel
+   PRD §3.2: Sticky card on desktop with income/deduction/tax summary.
+   ============================================================ */
+
+.preview {
+  background: var(--color-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  position: sticky;
+  top: var(--space-8);
+  max-height: calc(100vh - 4rem);
+  overflow-y: auto;
+}
+
+/* ---- Header ---- */
+.preview__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.preview__header-icon {
+  font-size: var(--font-size-lg);
+}
+
+.preview__title {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  flex: 1;
+}
+
+.preview__badge {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-success);
+  padding: 2px var(--space-2);
+  background: var(--color-success-light);
+  border-radius: var(--radius-full);
+  letter-spacing: 0.02em;
+}
+
+/* ---- Sections ---- */
+.preview__section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.preview__section--compact {
+  gap: var(--space-2);
+}
+
+.preview__section-title {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ---- Rows ---- */
+.preview__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.preview__row--total {
+  padding-top: var(--space-2);
+}
+
+.preview__label {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.3;
+}
+
+.preview__row--total .preview__label {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.preview__amount {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.preview__row--total .preview__amount {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+}
+
+.preview__empty {
+  color: var(--color-text-muted);
+  font-weight: var(--font-weight-regular);
+}
+
+/* ---- Animated Value Highlight ---- */
+.preview-value {
+  transition: background 0.2s ease;
+  padding: 1px 4px;
+  border-radius: 4px;
+}
+
+.preview-value--highlight {
+  background: rgba(79, 70, 229, 0.08);
+}
+
+/* ---- Tag (Age) ---- */
+.preview__tag {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-primary);
+  padding: 2px var(--space-3);
+  background: var(--color-primary-light);
+  border-radius: var(--radius-full);
+}
+
+/* ---- Divider ---- */
+.preview__divider {
+  height: 1px;
+  background: var(--color-border-light);
+}
+
+/* ---- Locked Placeholder ---- */
+.preview__section--locked {
+  opacity: 0.7;
+}
+
+.preview__locked-content {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background: var(--color-bg);
+  border-radius: var(--radius-sm);
+  border: 1px dashed var(--color-border);
+}
+
+.preview__locked-icon {
+  font-size: var(--font-size-sm);
+}
+
+.preview__locked-text {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-relaxed);
+}
+
+/* ---- Privacy Badge ---- */
+.preview__privacy {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border-light);
+}
+
+/* ---- Tax Comparison (Phase 5) ---- */
+.preview__section--tax {
+  background: var(--color-primary-light);
+  border-radius: var(--radius-sm);
+  padding: var(--space-4);
+  margin-top: var(--space-2);
+}
+
+.preview__tax-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+  margin-bottom: var(--space-3);
+}
+
+.preview__tax-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-3);
+  background: var(--color-card);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border-light);
+}
+
+.preview__tax-col-label {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.preview__tax-col-value {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+}
+
+.preview__recommendation {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-success);
+  padding: var(--space-2) var(--space-3);
+  background: var(--color-success-light);
+  border-radius: var(--radius-full);
+}
+
+.preview__rec-icon {
+  font-size: var(--font-size-sm);
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 1023px) {
+  .preview {
+    position: static;
+    max-height: none;
+  }
+}

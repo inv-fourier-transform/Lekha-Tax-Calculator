@@ -1,0 +1,210 @@
+/* ============================================================
+   Wizard Layout & Navigation
+   PRD §3.1: Two-column layout, progress bar, step navigation.
+   ============================================================ */
+
+.wizard {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg);
+}
+
+/* ---- Header ---- */
+.wizard__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) var(--space-8);
+  border-bottom: 1px solid var(--color-border-light);
+  background: var(--color-card);
+}
+
+.wizard__back-home {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: none;
+  border: none;
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  cursor: pointer;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  transition: background var(--transition-fast);
+}
+
+.wizard__back-home:hover {
+  background: var(--color-primary-light);
+}
+
+.wizard__progress-info {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+}
+
+/* ---- Progress Bar ---- */
+.wizard__progress-bar {
+  position: relative;
+  height: 4px;
+  background: var(--color-border-light);
+}
+
+.wizard__progress-fill {
+  height: 100%;
+  background: var(--gradient-cta);
+  border-radius: 0 2px 2px 0;
+  transition: width 0.4s ease;
+}
+
+.wizard__progress-dots {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  padding: 0 var(--space-8);
+  pointer-events: none;
+}
+
+.wizard__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-border);
+  border: 2px solid var(--color-bg);
+  transition: background var(--transition-base), transform var(--transition-base);
+}
+
+.wizard__dot--active {
+  background: var(--color-primary);
+}
+
+.wizard__dot--current {
+  transform: scale(1.4);
+  box-shadow: 0 0 0 3px var(--color-primary-glow);
+}
+
+/* ---- Body: Two-Column Layout ---- */
+.wizard__body {
+  display: grid;
+  grid-template-columns: 55% 45%;
+  gap: var(--space-8);
+  padding: var(--space-10) var(--space-8);
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+  flex: 1;
+}
+
+/* ---- Question Panel (Left) ---- */
+.wizard__question-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.wizard__card {
+  background: var(--color-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-8);
+  flex: 1;
+}
+
+/* ---- Navigation ---- */
+.wizard__nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--space-6);
+}
+
+.wizard__nav-back {
+  background: none;
+  border: none;
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-sm);
+  transition: color var(--transition-fast), background var(--transition-fast);
+}
+
+.wizard__nav-back:hover {
+  color: var(--color-text-primary);
+  background: var(--color-card);
+}
+
+.wizard__nav-continue {
+  padding: var(--space-3) var(--space-8);
+  background: var(--gradient-cta);
+  color: #FFFFFF;
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  box-shadow: var(--shadow-cta);
+  transition: transform var(--transition-base), box-shadow var(--transition-base), opacity var(--transition-base);
+}
+
+.wizard__nav-continue:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-cta-hover);
+}
+
+.wizard__nav-continue:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.wizard__nav-continue--disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* ---- Preview Panel (Right) ---- */
+.wizard__preview-panel {
+  /* Sticky handled by LivePreview itself */
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 1023px) {
+  .wizard__body {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    padding: var(--space-6) var(--space-4);
+  }
+
+  .wizard__header {
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .wizard__progress-dots {
+    padding: 0 var(--space-4);
+  }
+
+  .wizard__card {
+    padding: var(--space-6);
+  }
+
+  .wizard__preview-panel {
+    order: -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .wizard__nav-continue {
+    padding: var(--space-3) var(--space-5);
+    font-size: var(--font-size-sm);
+  }
+}

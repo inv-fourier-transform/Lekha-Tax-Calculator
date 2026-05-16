@@ -1,0 +1,40 @@
+# TaxRegime Application Dependencies
+# Note: This is a Node.js (React + Vite) project. 
+# The primary dependency manager is npm (see package.json).
+# This YAML file summarizes the core tech stack used in the project.
+
+project: "TaxRegime Calculator"
+version: "1.0.0"
+author: "Arjun K"
+
+core_dependencies:
+  - name: "react"
+    version: "^19.2.6"
+    description: "Core UI library for building component-based interfaces"
+  - name: "react-dom"
+    version: "^19.2.6"
+    description: "React package for working with the DOM"
+
+development_dependencies:
+  - name: "vite"
+    version: "^8.0.12"
+    description: "Next Generation Frontend Tooling for blazing fast builds and HMR"
+  - name: "@vitejs/plugin-react"
+    version: "^6.0.1"
+    description: "Vite plugin for fast React refreshes"
+  - name: "typescript"
+    version: "~6.0.2"
+    description: "Strongly typed programming language that builds on JavaScript"
+  - name: "eslint"
+    version: "^10.3.0"
+    description: "Pluggable JavaScript/TypeScript linter"
+  - name: "eslint-plugin-react-hooks"
+    version: "^7.1.1"
+    description: "ESLint rules for React Hooks"
+  - name: "eslint-plugin-react-refresh"
+    version: "^0.5.2"
+    description: "Validate that components can safely be updated with fast refresh"
+
+infrastructure:
+  node_version: ">= 18.0.0"
+  package_manager: "npm"
